@@ -141,6 +141,28 @@ module.exports = {
 };
 ```
 
+## Using ESLint
+
+To check your code for linting errors, run the following command in your project directory:
+
+```bash
+npm run lint [file.js]
+```
+
+Replace `[file.js]` with the name of the file you want to lint. For example:
+
+```bash
+npm run lint 1-main.js
+```
+
+To check all files matching the pattern `[0-9]*.js`, you can use:
+
+```bash
+npm run check-lint
+```
+
+This will ensure your code adheres to the specified ESLint rules.
+
 ### Final Step
 
 Run `npm install` from the terminal in your project folder to install all necessary project dependencies. Do not push the `node_modules` folder to your repository.
