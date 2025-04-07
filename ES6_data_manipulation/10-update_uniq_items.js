@@ -8,7 +8,7 @@ export default function updateUniqueItems(groceries) {
   // Iterate through the Map entries
   for (const [item, quantity] of groceries.entries()) {
     // If the quantity is not 1 (not unique), update it to 100
-    if (quantity !== 1) {
+    if (quantity === 1) {
       groceries.set(item, 100);
     }
   }
