@@ -3,3 +3,4 @@
 nodesource_setup.sh
 /.venv
 /__pycache__
+*.pyc
