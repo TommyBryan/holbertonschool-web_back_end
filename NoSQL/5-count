@@ -1,4 +1,4 @@
 // Script that displays the numbers of documents in the collection school.
 // print() is used to make the script safer
 
-print(db.school.countDocuments())
+print(db.school.count())
