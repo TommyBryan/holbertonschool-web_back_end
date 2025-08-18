@@ -4,3 +4,4 @@ nodesource_setup.sh
 /.venv
 /__pycache__
 *.pyc
+*ES6_basic_v1

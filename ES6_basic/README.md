@@ -1,45 +1,15 @@
 # ES6 Basics
 
-## Learning Objectives
-
-At the end of this project, you are expected to be able to explain to anyone, without the help of Google:
-
-- What ES6 is
-- New features introduced in ES6
-- The difference between a constant and a variable
-- Block-scoped variables
-- Arrow functions and function parameters default to them
-- Rest and spread function parameters
-- String templating in ES6
-- Object creation and their properties in ES6
-- Iterators and for-of loops
-
-## Requirements
-
-### General
-
-- All your files will be interpreted/compiled on Ubuntu 20.04 LTS using Node.js 20.x.x and npm 9.x.x.
-- Allowed editors: `vi`, `vim`, `emacs`, `Visual Studio Code`.
-- All your files should end with a new line.
-- A `README.md` file, at the root of the folder of the project, is mandatory.
-- Your code should use the `.js` extension.
-- Your code will be tested using the Jest Testing Framework.
-- Your code will be analyzed using the linter ESLint along with specific rules that we’ll provide.
-- All of your functions must be exported.
-
 ## Setup
 
-### Install Node.js 20.x.x
-
-Run the following commands in your home directory:
+1. Install NodeJS 20.x.x
+   (in your home directory):
 
 ```bash
 curl -sL https://deb.nodesource.com/setup_20.x -o nodesource_setup.sh
 sudo bash nodesource_setup.sh
 sudo apt install nodejs -y
 ```
-
-Verify the installation:
 
 ```bash
 $ nodejs -v
@@ -48,19 +18,34 @@ $ npm -v
 10.7.0
 ```
 
-### Install Jest, Babel, and ESLint
+### 2. Install Jest, Babel, and ESLint
 
-Run the following commands in your project directory:
+- **Install Jest using:**
 
 ```bash
 npm install --save-dev jest
+```
+
+- **Install Babel using:**
+
+```bash
 npm install --save-dev babel-jest @babel/core @babel/preset-env
+```
+
+- **Install ESLint using:**
+
+```bash
 npm install --save-dev eslint
 ```
 
-## Configuration Files
+### 3. Configuration files
 
-### `package.json`
+Please create the following 3 files (with the provided contents) in the project directory:
+
+#### `package.json`
+
+<details>
+<summary>Click to show/hide file contents</summary>
 
 ```json
 {
@@ -84,16 +69,21 @@ npm install --save-dev eslint
 }
 ```
 
-### `babel.config.js`
+</details>
 
-```javascript
+#### `babel.config.js`
+
+<details>
+<summary>Click to show/hide file contents</summary>
+
+```js
 module.exports = {
   presets: [
     [
-      '@babel/preset-env',
+      "@babel/preset-env",
       {
         targets: {
-          node: 'current',
+          node: "current",
         },
       },
     ],
@@ -101,68 +91,46 @@ module.exports = {
 };
 ```
 
-### `.eslintrc.js`
+</details>
 
-```javascript
+#### `.eslintrc.js`
+
+<details>
+<summary>Click to show/hide file contents</summary>
+
+```js
 module.exports = {
   env: {
     browser: false,
     es6: true,
     jest: true,
   },
-  extends: [
-    'airbnb-base',
-    'plugin:jest/all',
-  ],
+  extends: ["airbnb-base", "plugin:jest/all"],
   globals: {
-    Atomics: 'readonly',
-    SharedArrayBuffer: 'readonly',
+    Atomics: "readonly",
+    SharedArrayBuffer: "readonly",
   },
   parserOptions: {
     ecmaVersion: 2018,
-    sourceType: 'module',
+    sourceType: "module",
   },
-  plugins: ['jest'],
+  plugins: ["jest"],
   rules: {
-    'no-console': 'off',
-    'no-shadow': 'off',
-    'no-restricted-syntax': [
-      'error',
-      'LabeledStatement',
-      'WithStatement',
-    ],
+    "no-console": "off",
+    "no-shadow": "off",
+    "no-restricted-syntax": ["error", "LabeledStatement", "WithStatement"],
   },
-  overrides:[
+  overrides: [
     {
-      files: ['*.js'],
-      excludedFiles: 'babel.config.js',
-    }
-  ]
+      files: ["*.js"],
+      excludedFiles: "babel.config.js",
+    },
+  ],
 };
 ```
 
-## Using ESLint
+</details>
 
-To check your code for linting errors, run the following command in your project directory:
+Finally…
 
-```bash
-npm run lint [file.js]
-```
-
-Replace `[file.js]` with the name of the file you want to lint. For example:
-
-```bash
-npm run lint 1-main.js
-```
-
-To check all files matching the pattern `[0-9]*.js`, you can use:
-
-```bash
-npm run check-lint
-```
-
-This will ensure your code adheres to the specified ESLint rules.
-
-### Final Step
-
-Run `npm install` from the terminal in your project folder to install all necessary project dependencies. Do not push the `node_modules` folder to your repository.
+Don’t forget to run `npm install` from the terminal of your project folder to install all necessary project dependencies. **Do not push on your repository the folder `node_modules` that has been created.**
