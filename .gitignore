@@ -1,5 +1,4 @@
 *node_modules
-*-main.js
 nodesource_setup.sh
 /.venv
 /__pycache__
