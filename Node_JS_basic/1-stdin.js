@@ -1,12 +1,13 @@
-const readline = require('readline'); // readline allow
+console.log('Welcome to Holberton School, what is your name?');
 
-const rl = readline.createInterface({
-  input: process.stdin, // stdin = keyboard
-  output: process.stdout, // stdout = screen
+process.stdin.setEncoding('utf8'); // so input comes as a string
+
+// "data" event happens whenever the user inputs data
+process.stdin.on('data', (input) => {
+  const name = input.trim(); // remove newline (\n)
+  console.log(`Your name is: ${name}`);
 });
 
-rl.question('Welcome to Holberton School, what is your name?\n', (INPUT) => {
-  console.log(`Your name is: ${INPUT}`);
-  console.log('This important software is now closing\n');
-  rl.close(); // Close the readline
+process.stdin.on('end', () => {
+  console.log('This important software is now closing');
 });
