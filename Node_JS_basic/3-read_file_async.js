@@ -1,47 +1,46 @@
+// fs module allows to work with the file system
 const fs = require('fs');
 
 function countStudents(path) {
   return new Promise((resolve, reject) => {
+    // Read file asynchronously
     fs.readFile(path, 'utf8', (err, data) => {
       if (err) {
-        reject(Error('Cannot load the database'));
+        reject(new Error('Cannot load the database'));
         return;
       }
-      const response = [];
-      let msg;
 
-      const content = data.toString().split('\n');
+      try {
+        // Split into non-empty lines
+        const lines = data.split('\n').filter((line) => line.trim() !== '');
+        // Skip header
+        const studentRows = lines.slice(1);
 
-      let students = content.filter((item) => item);
+        const students = {};
+        let totalStudents = 0;
 
-      students = students.map((item) => item.split(','));
+        // Process each student row
+        studentRows.forEach((row) => {
+          const [firstname, lastname, age, field] = row.split(',');
+          if (firstname && lastname && age && field) {
+            if (!students[field]) students[field] = [];
+            students[field].push(firstname.trim());
+            totalStudents += 1;
+          }
+        });
 
-      const NUMBER_OF_STUDENTS = students.length ? students.length - 1 : 0;
-      msg = `Number of students: ${NUMBER_OF_STUDENTS}`;
-      console.log(msg);
-
-      response.push(msg);
-
-      const fields = {};
-      for (const i in students) {
-        if (i !== 0) {
-          if (!fields[students[i][3]]) fields[students[i][3]] = [];
-
-          fields[students[i][3]].push(students[i][0]);
+        // Output results
+        console.log(`Number of students: ${totalStudents}`);
+        for (const [field, names] of Object.entries(students)) {
+          console.log(
+            `Number of students in ${field}: ${names.length}. List: ${names.join(', ')}`,
+          );
         }
+
+        resolve(); // Promise fulfilled
+      } catch (err) {
+        reject(new Error('Cannot load the database'));
       }
-
-      delete fields.field;
-
-      for (const key of Object.keys(fields)) {
-        msg = `Number of students in ${key}: ${fields[key].length
-        }. List: ${fields[key].join(', ')}`;
-
-        console.log(msg);
-
-        response.push(msg);
-      }
-      resolve(response);
     });
   });
 }
