@@ -1,12 +1,9 @@
 // Import express module
 const express = require('express');
-
-// Get command line arguments (database file path)
-const args = process.argv.slice(2);
 const countStudents = require('./3-read_file_async');
 
-// Set database file path from arguments
-const DATABASE = args[0];
+// Hardcode the database file path
+const DATABASE = 'database.csv';
 
 // Create an Express application
 const app = express();
