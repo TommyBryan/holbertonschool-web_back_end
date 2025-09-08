@@ -49,7 +49,15 @@ npm install --save-dev babel-jest @babel/core @babel/preset-env
 npm install --save-dev eslint
 ```
 
-### 3. Configuration files
+### 3. Install Express
+
+- **Install Express using:**
+
+```bash
+npm install express
+```
+
+### 4. Configuration files
 
 Please create the following files (with the provided contents) in the project directory:
 
