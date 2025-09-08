@@ -29,16 +29,15 @@ function countStudents(path) {
           }
         });
 
-        // Collect output lines instead of logging
-        const output = [];
-        output.push(`Number of students: ${totalStudents}`);
+        // Output results
+        console.log(`Number of students: ${totalStudents}`);
         for (const [field, names] of Object.entries(students)) {
-          output.push(
+          console.log(
             `Number of students in ${field}: ${names.length}. List: ${names.join(', ')}`,
           );
         }
 
-        resolve(output); // Return the output array
+        resolve(); // Promise fulfilled
       } catch (err) {
         reject(new Error('Cannot load the database'));
       }
